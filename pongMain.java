@@ -3,18 +3,15 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.Timer;
  
-//we need the Applet methods and the MouseMotionListener interface
-//(used for the human controlled panel
 public class pongMain extends Applet implements MouseMotionListener, ActionListener
 {
-	   //we declare an instance of our ball and two paddles
+	//Declared an instance of our ball and two paddles
  Ball ball;
  PaddleLeft pLeft;
  PaddleRight pRight;
  //a font used to display the score
  Font newFont = new Font("sansserif", Font.BOLD, 20);
- //The image I am creating is goin to be double buffered
- //so that there is no flicker when the applet is repainted
+ 
 
  Graphics bufferGraphics;
  // The image that will contain everything that has been drawn on
@@ -31,18 +28,14 @@ public class pongMain extends Applet implements MouseMotionListener, ActionListe
  {
       //sets the applet to be 500 * 300
       setSize(500, 300);
-      //we now instantiate our ball and two paddles
+    
       ball = new Ball();
       pLeft = new PaddleLeft();
-      //this paddle is set to the current ball y positio
-      //minus 35 so the ball will be lined up with the center
-      //of our 70 pixel long paddle
       pRight = new PaddleRight(ball.getY() - 35);
       //we add our mouseMotionListener
       addMouseMotionListener(this);
       //I want the applet to look like a grass court =)
       setBackground(Color.green);
-      // Create an offscreen image to draw on
       offscreen = createImage(WIDTH,HEIGHT);
       bufferGraphics = offscreen.getGraphics();
  }
